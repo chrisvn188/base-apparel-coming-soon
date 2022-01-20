@@ -18,6 +18,32 @@ body{
   font-size:1rem;
   font-weight: 400;
   line-height: 1.5;
+  background-image: linear-gradient(135deg,hsl(0, 0%, 100%),hsl(0, 100%, 98%));
+}
+
+@media (min-width:1024px) {
+  body{
+    background-image:url(images/bg-pattern-desktop.svg), linear-gradient(135deg,hsl(0, 0%, 100%),hsl(0, 100%, 98%));
+    background-repeat: no-repeat;
+  }
+}
+
+.container{
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 100vh;
+  max-width: 375px;
+  margin: 0 auto;
+}
+
+@media (min-width:1024px) {
+  .container{
+    max-width: none;
+    padding-left: 10em;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
+    grid-column-gap: 14em;
+  }
 }
 
 .header{
@@ -31,6 +57,17 @@ body{
   display: block;
 }
 
+@media (min-width:1024px) {
+  .header{
+    padding: 4em 0;
+    grid-column: 1 / span 1;
+    grid-row:1 / span 1;
+  }
+  .header__logo{
+    max-width: none;
+  }
+}
+
 .hero__image{
   width: 100%;
   height:auto;
@@ -42,7 +79,25 @@ body{
   padding: 3.8em 2em;
   text-align: center;
   margin: 0 auto;
-  margin-bottom: 4em;
+}
+
+@media (min-width:1024px) {
+  .hero{
+    grid-column: 2 / span 1;
+    grid-row:1 / span 2;
+  }
+
+  .hero__image{
+    height: 100%;
+  }
+
+  .main{
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+    text-align: left;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .main__heading{
@@ -50,6 +105,13 @@ body{
   text-transform: uppercase;
   line-height: 1.1;
   letter-spacing: 10px;
+}
+
+@media (min-width:1024px) {
+  .main__heading{
+    font-size: 4rem;
+    letter-spacing: 15px;
+  }
 }
 
 .main__heading > span{
@@ -61,11 +123,22 @@ body{
   color:var(--color-desaturated-red);
 }
 
+.main__heading--bold{
+  color: var(--color-dark-grayish-red);
+}
 
 .main__paragraph{
-  margin-top: .75em;
+  margin-top: .85em;
   font-size: .9rem;
   color:var(--color-desaturated-red);
+}
+
+@media (min-width:1024px) {
+  .main__paragraph{
+    margin-top: 1.5em;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
 }
 
 .visually-hidden{
@@ -82,13 +155,19 @@ body{
   margin-top: 2.2em;
 }
 
+@media (min-width:1024px) {
+  .form{
+    margin-top: 3em;
+  }
+}
+
 .input-container{
   position: relative;
 }
 
 
 .form__control{
-  padding: 1.1em;
+  padding: 1.3em 1.5em;
   border-radius: 2em;
   display: block;
   width: 100%;
@@ -111,7 +190,7 @@ body{
 .error-icon{
   position: absolute;
   top: 50%;
-  right: 4.5em;
+  right: 6.5em;
   transform: translate(-50%,-50%);
   height: 0;
   visibility: hidden;
@@ -127,12 +206,18 @@ body{
   top: 0;
   right: 0;
   height: 100%;
-  padding: 0 2em;
+  padding: 0 3em;
   border-radius: 2em;
   border:none;
   background-image: linear-gradient(135deg,hsl(0, 80%, 86%),hsl(0, 74%, 74%));
   transform: scale(1.1);
   box-shadow: 2px 2px 10px 2px rgba(0, 0, 0, .125);
+  cursor: pointer;
+  transition: all .3s ease-out;
+}
+
+.form__btn:hover{
+  padding:0 2em;
 }
 
 .error-message{
@@ -140,6 +225,12 @@ body{
   color: var(--color-soft-red);
   height: 0;
   visibility: hidden;
+}
+
+@media (min-width:1024px) {
+  .error-message{
+    padding-left: 1.5em;
+  }
 }
 
 .error-message.active{
